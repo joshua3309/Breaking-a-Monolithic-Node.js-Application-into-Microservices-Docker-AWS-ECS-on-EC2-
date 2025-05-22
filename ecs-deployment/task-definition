@@ -1,0 +1,62 @@
+[
+  {
+    "family": "mb-posts-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["EC2"],
+    "cpu": "512",
+    "memory": "1024",
+    "containerDefinitions": [
+      {
+        "name": "mb-posts-container",
+        "image": "<your-ecr-uri>/post-service:latest",
+        "portMappings": [
+          {
+            "containerPort": 3000,
+            "protocol": "tcp"
+          }
+        ],
+        "essential": true
+      }
+    ]
+  },
+  {
+    "family": "mb-threads-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["EC2"],
+    "cpu": "512",
+    "memory": "1024",
+    "containerDefinitions": [
+      {
+        "name": "mb-threads-container",
+        "image": "<your-ecr-uri>/thread-service:latest",
+        "portMappings": [
+          {
+            "containerPort": 3000,
+            "protocol": "tcp"
+          }
+        ],
+        "essential": true
+      }
+    ]
+  },
+  {
+    "family": "mb-users-task",
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["EC2"],
+    "cpu": "512",
+    "memory": "1024",
+    "containerDefinitions": [
+      {
+        "name": "mb-users-container",
+        "image": "<your-ecr-uri>/user-service:latest",
+        "portMappings": [
+          {
+            "containerPort": 3000,
+            "protocol": "tcp"
+          }
+        ],
+        "essential": true
+      }
+    ]
+  }
+]
