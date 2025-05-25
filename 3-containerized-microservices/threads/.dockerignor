@@ -1,0 +1,4 @@
+Service-definition(threads)
+cloudformation-template
+task-definition(threads)
+.dockerignore
