@@ -1,0 +1,4 @@
+Service-definition(POSTS)
+cloudformation-template
+task-definition(POSTS)
+.dockerignore
