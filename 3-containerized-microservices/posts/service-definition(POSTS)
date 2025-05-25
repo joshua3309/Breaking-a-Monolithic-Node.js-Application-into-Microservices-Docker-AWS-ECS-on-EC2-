@@ -1,0 +1,24 @@
+{
+  "cluster": "mb-ecs-cluster",
+  "serviceName": "mb-post-service",
+  "taskDefinition": "mb-post-task",
+  "launchType": "EC2",
+  "desiredCount": 1,
+  "deploymentController": {
+    "type": "ECS"
+  },
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": ["subnet-abc123456"],
+      "securityGroups": ["sg-ecssg123456"],
+      "assignPublicIp": "ENABLED"
+    }
+  },
+  "loadBalancers": [
+    {
+      "targetGroupArn": "arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/mb-post-target/abcdef123456",
+      "containerName": "post-container",
+      "containerPort": 3000
+    }
+  ]
+}
