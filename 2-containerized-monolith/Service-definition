@@ -1,0 +1,32 @@
+{
+  "serviceName": "mb-ecs-service",
+  "taskDefinition": "mb-task",
+  "launchType": "EC2",
+  "desiredCount": 1,
+  "deploymentConfiguration": {
+    "maximumPercent": 200,
+    "minimumHealthyPercent": 100
+  },
+  "loadBalancers": [
+    {
+      "targetGroupArn": "arn:aws:elasticloadbalancing:<region>:<account-id>:targetgroup/mb-target/<id>",
+      "containerName": "mb-container",
+      "containerPort": 3000
+    }
+  ],
+  "networkConfiguration": {
+    "awsvpcConfiguration": {
+      "subnets": [
+        "<subnet-1-id>",
+        "<subnet-2-id>"
+      ],
+      "securityGroups": [
+        "<ecs-security-group-id>"
+      ],
+      "assignPublicIp": "ENABLED"
+    }
+  },
+  "schedulingStrategy": "REPLICA",
+  "healthCheckGracePeriodSeconds": 60,
+  "platformVersion": "LATEST"
+}
